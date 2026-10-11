@@ -1,0 +1,53 @@
+[
+  {
+    "id": "example-limits",
+    "name": "Пример: заменить только тело лимитов",
+    "enabled": true,
+    "method": "GET",
+    "match_mode": "contains",
+    "url_pattern": "/dbp-interbank-transfers/api/v1/limits",
+    "request": {
+      "enabled": false,
+      "body_mode": "none",
+      "body": "",
+      "content_type": "",
+      "set_headers": {},
+      "remove_headers": []
+    },
+    "response": {
+      "enabled": true,
+      "body_mode": "replace",
+      "body": "{}",
+      "content_type": "application/json; charset=utf-8",
+      "set_headers": {},
+      "remove_headers": [],
+      "status_code": null
+    }
+  },
+  {
+    "id": "e91825e4-80de-4d79-b17c-579f12caf54c",
+    "name": "Ошибка TB-18947",
+    "enabled": true,
+    "method": "PUT",
+    "match_mode": "contains",
+    "url_pattern": "/dbp-api-gateway/dbp-npck-api/api/public/v2/transfers/outgoing/transfer",
+    "request": {
+      "enabled": false,
+      "body_mode": "none",
+      "body": "",
+      "content_type": "",
+      "set_headers": {},
+      "remove_headers": [],
+      "status_code": null
+    },
+    "response": {
+      "enabled": true,
+      "body_mode": "replace",
+      "body": "{  \"code\": \"TRANSFER_OUTGOING_DEBIT_OPERATION_ERROR\",  \"message\": \"Не удалось списать средства со счета. Проверьте баланс и лимиты или обратитесь по номеру 505.\" }",
+      "content_type": "",
+      "set_headers": {},
+      "remove_headers": [],
+      "status_code": 422
+    }
+  }
+]
